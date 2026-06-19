@@ -11,9 +11,13 @@ fn main() {
         io::stdin().read_line(&mut user_input).unwrap();
 
         user_input = user_input.trim().to_string();
+        
         if user_input == "exit" {
             break;
+        }else if user_input.starts_with("echo "){
+            println!("{}",&user_input[5..]);
+        }else{
+            println!("{}: command not found", user_input.trim());
         }
-        println!("{}: command not found", user_input.trim());
     }
 }
