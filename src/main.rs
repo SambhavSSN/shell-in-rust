@@ -21,7 +21,7 @@ fn find_executable(cmd: &str) -> Option<std::path::PathBuf> {
 }
 fn find_curr_directory() {
     match env::current_dir() {
-        Ok(path) => println!("{}", path.display());
+        Ok(path) => println!("{}", path.display()),
         Err(e) => eprintln!("{}", e),
     }
 }
