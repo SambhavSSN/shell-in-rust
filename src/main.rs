@@ -54,8 +54,8 @@ fn main() {
 
             let program = parts[0];
 
-            if let Some(path) = find_executable(program) {
-                let _ = Command::new(path)
+            if find_executable(program).is_some() {
+                let _ = Command::new(program)
                     .args(&parts[1..])
                     .status();
             } else {
