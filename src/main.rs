@@ -19,9 +19,10 @@ fn find_executable(cmd: &str) -> Option<std::path::PathBuf> {
 
     None
 }
-fn find_curr_directory() {
+fn find_curr_directory() -> std::io::Result<()> {
     let path = env::current_dir()?;
     println!("{}", path.display()); 
+    Ok(())
 }
 
 fn main() {
