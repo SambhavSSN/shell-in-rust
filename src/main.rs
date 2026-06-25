@@ -19,10 +19,11 @@ fn find_executable(cmd: &str) -> Option<std::path::PathBuf> {
 
     None
 }
-fn find_curr_directory() -> std::io::Result<()> {
-    let path = env::current_dir()?;
-    println!("{}", path.display()); 
-    Ok(())
+fn find_curr_directory() {
+    match env::current_dir() {
+        Ok(path) => println!("{}", path.display());
+        Err(e) => eprintln!("{}", e),
+    }
 }
 
 fn main() {
@@ -44,7 +45,7 @@ fn main() {
         } else if user_input.starts_with("type ") {
             let cmd = &user_input[5..];
 
-            if ["echo", "exit", "type"].contains(&cmd) {
+            if ["echo", "exit", "type", "pwd"].contains(&cmd) {
                 println!("{} is a shell builtin", cmd);
             } else if let Some(path) = find_executable(cmd) {
                 println!("{} is {}", cmd, path.display());
