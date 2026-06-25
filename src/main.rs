@@ -19,6 +19,10 @@ fn find_executable(cmd: &str) -> Option<std::path::PathBuf> {
 
     None
 }
+fn find_curr_directory() {
+    let path = env::current_dir()?;
+    println!("{}", path.display()); 
+}
 
 fn main() {
     loop {
@@ -34,6 +38,8 @@ fn main() {
             break;
         } else if user_input.starts_with("echo ") {
             println!("{}", &user_input[5..]);
+        } else if user_input == "pwd"{
+            find_curr_directory();
         } else if user_input.starts_with("type ") {
             let cmd = &user_input[5..];
 
